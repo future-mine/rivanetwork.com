@@ -1,0 +1,332 @@
+Options -indexes
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^robots.txt(/?)$ robots.php [L]
+RewriteRule ^sitemap.xml(/?)$ sitemap.php [L]
+
+RewriteRule ^(/?)$ main/index.php?page=home [L]
+RewriteRule ^(anasayfa|home)(/?)$ main/index.php?page=home [L]
+RewriteRule ^discord(/?)$ main/index.php?page=discord [L]
+RewriteRule ^(kurulum|install)(/?)$ install/includes/php/install.php [L]
+RewriteRule ^404(/?)$ main/index.php?page=404 [L]
+RewriteRule ^(bakim|maintance)(/?)$ main/index.php?page=maintance [L]
+
+## LOTTERY ##
+RewriteRule ^(piyango|lottery)(/?)$ main/index.php?page=lottery [L]
+
+## FORUM ##
+RewriteRule ^(forum|forum)(/?)$ main/index.php?page=forum&action=topic [L]
+RewriteRule ^(forum|forum)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=forum&action=topic&categoryID=$3 [L]
+RewriteRule ^(forum|forum)/([0-9a-zA-Z-_]+)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=forum&action=topic&topicID=$4 [L]
+RewriteRule ^(forum|forum)/(konu|topic)/(olustur|create)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=forum&action=proccess&proccess=create&categoryID=$5 [L]
+RewriteRule ^(forum|forum)/(konu|topic)/(olustur|create)(/?)$ main/index.php?page=forum&action=proccess&proccess=create [L]
+RewriteRule ^(forum|forum)/(konu|topic)/(duzenle|edit)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=forum&action=proccess&proccess=edit&target=topic&topicID=$5 [L]
+RewriteRule ^(forum|forum)/(konu|topic)/(mesaj|message)/(duzenle|edit)/([0-9]+)(/?)$ main/index.php?page=forum&action=proccess&proccess=edit&target=message&messageID=$5 [L]
+
+
+## BLOG ##
+RewriteRule ^(haber|blog)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=blog&news=$3 [L]
+RewriteRule ^(haberler|news)/([0-9]+)(/?)$ main/index.php?page=home&news=$2 [L]
+RewriteRule ^(haberler|news)/(kategori|category)/([0-9a-zA-Z-_]+)(/?)$ main/index.php?page=news&action=category&category=$3 [L]
+RewriteRule ^([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=pages&pages=$2 [L]
+
+## CONTACT ##
+RewriteRule ^(oy|vote)(/?)$ main/index.php?page=vote [L]
+RewriteRule ^(kurallar|rules)(/?)$ main/index.php?page=rules [L]
+RewriteRule ^(gizlilik-sozlesmesi|privacy-policy)(/?)$ main/index.php?page=privacy [L]
+RewriteRule ^(hakkimizda|about-us)(/?)$ main/index.php?page=abouts [L]
+RewriteRule ^(satis-sozlesmesi|sales-agreement)(/?)$ main/index.php?page=toc [L]
+RewriteRule ^(yasaklananlar|banned)(/?)$ main/index.php?page=bans [L]
+
+## ACCOUNT ##
+RewriteRule ^(kayit-ol|register)(/?)$ main/index.php?page=register [L]
+RewriteRule ^(giris-yap|login)(/?)$ main/index.php?page=login [QSA,L]
+RewriteRule ^(cikis-yap|logout)(/?)$ main/index.php?page=exit [L]
+RewriteRule ^(sifremi-unuttum|recovery)(/?)$ main/index.php?page=recovery [L]
+RewriteRule ^(sifremi-unuttum|recovery)/([0-9a-zA-Z-_]+)(/?)$ main/index.php?page=recovery&token=$2 [L]
+RewriteRule ^(oyuncu|player)(/?)$ main/index.php?page=player [L]
+RewriteRule ^(oyuncu|player)/([0-9a-zA-Z-_]+)(/?)$ main/index.php?page=player&action=info&player=$2 [L]
+RewriteRule ^(oyuncu|player)/([0-9a-zA-Z-_]+)/(mesajlar|messages)(/?)$ main/index.php?page=player&action=message&player=$2 [L]
+RewriteRule ^(sandik|chest)(/?)$ main/index.php?page=chest [L]
+RewriteRule ^(envanter|inventory)(/?)$ main/index.php?page=inventory [L]
+RewriteRule ^(hediye-kuponu|gift-coupon)(/?)$ main/index.php?page=coupon [L]
+
+## STORE ##
+RewriteRule ^(magaza|store)(/?)$ main/index.php?page=store [L]
+RewriteRule ^(magaza|store)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=store&serverID=$3 [L]
+RewriteRule ^(magaza|store)/([0-9a-zA-Z-_]+)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=store&categoryID=$4 [L]
+RewriteRule ^(magaza|store)/([0-9a-zA-Z-_]+)/([0-9a-zA-Z-_]+)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=store&productID=$5 [L]
+RewriteRule ^(sepet|cart)(/?)$ main/index.php?page=shopping-cart [L]
+
+## SUPPORT ##
+RewriteRule ^(yardim-merkezi|help-center)(/?)$ main/index.php?page=help-center [L]
+RewriteRule ^(destek|support)(/?)$ main/index.php?page=support&action=get [L]
+RewriteRule ^(destek|support)/(olustur|create)(/?)$ main/index.php?page=support&action=create [L]
+RewriteRule ^(destek|support)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=support&action=update&id=$3 [L]
+
+## CREDIT ##
+RewriteRule ^(kredi|credit)/(yukle|upload)(/?)$ main/index.php?page=credit&action=proccess [L]
+RewriteRule ^(kredi|credit)/(yukle|upload)/(basarili|success)(/?)$ main/index.php?page=credit&action=transactions&target=successyfull [L]
+RewriteRule ^(kredi|credit)/(yukle|upload)/(basarisiz|fail)(/?)$ main/index.php?page=credit&action=transactions&target=unsuccessyfull [L]
+RewriteRule ^(kredi|credit)/(gonder|send)(/?)$ main/index.php?page=credit&action=transfer [L]
+
+## CARD GAME ##
+RewriteRule ^(kart-oyunu|card-game)(/?)$ main/index.php?page=card [L]
+RewriteRule ^(kart-oyunu|card-game)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ main/index.php?page=card&id=$3 [L]
+
+## PROFILE ##
+RewriteRule ^(profil|profile)(/?)$ main/index.php?page=profile&action=profile&proccess=profile [L]
+RewriteRule ^(profil|profile)/(mesajlar|message)(/?)$ main/index.php?page=profile&action=profile&proccess=message [L]
+RewriteRule ^(profil|profile)/(bildirimler|notifications)(/?)$ main/index.php?page=profile&action=profile&proccess=notifications [L]
+
+RewriteRule ^(profil|profile)/(duzenle|edit)(/?)$ main/index.php?page=profile&action=account&proccess=change [L]
+RewriteRule ^(profil|profile)/(sifremi-degistir|password-change)(/?)$ main/index.php?page=profile&action=account&proccess=password [L]
+RewriteRule ^(profil|profile)/(ayarlar|settings)(/?)$ main/index.php?page=profile&action=account&proccess=settings [L]
+
+RewriteRule ^(profil|profile)/(gecmis|history)/(sandik|chest)(/?)$ main/index.php?page=profile&action=history&proccess=chest [L]
+RewriteRule ^(profil|profile)/(gecmis|history)/(magaza|store)(/?)$ main/index.php?page=profile&action=history&proccess=store [L]
+RewriteRule ^(profil|profile)/(gecmis|history)/(kredi|credit)(/?)$ main/index.php?page=profile&action=history&proccess=credit [L]
+RewriteRule ^(profil|profile)/(gecmis|history)/(kart-oyunu|card-game)(/?)$ main/index.php?page=profile&action=history&proccess=card [L]
+RewriteRule ^(profil|profile)/(gecmis|history)/(hediye-kuponu|gift-coupon)(/?)$ main/index.php?page=profile&action=history&proccess=coupon [L]
+RewriteRule ^(profil|profile)/(gecmis|history)/(engel|ban)(/?)$ main/index.php?page=profile&action=history&proccess=banned [L]
+
+## PAYMENT TRANSACTIONS ##
+RewriteRule ^(odeme|payment)/paytr/([0-9a-zA-Z-_]+)(/?)$ main/index.php?page=credit&action=paytr&paymentID=$2 [L]
+RewriteRule ^(odeme|payment)/shopier/([0-9a-zA-Z-_]+)(/?)$ main/index.php?page=credit&action=shopier&paymentID=$2 [L]
+RewriteRule ^(odeme|payment)/callback/([0-9a-zA-Z-_]+)(/?)$ main/includes/packages/payments/callback.php?paymentAPI=$2 [L]
+
+
+## ADMIN PANEL ##
+RewriteRule ^admin/(anasayfa|home)(/?)$ admin/index.php?page=home [L]
+RewriteRule ^admin/(anasayfa|home)/perm-error(/?)$ admin/index.php?page=home&action=perm-error [L]
+RewriteRule ^admin/404(/?)$ admin/index.php?page=404 [L]
+RewriteRule ^admin/(guncellemeler|updates)(/?)$ admin/index.php?page=updates [L]
+RewriteRule ^admin/(/?)$ admin/index.php?page=home [L]
+
+## STORE ##
+RewriteRule ^admin/(magaza|store)/(sunucu|server)/(ekle|add)(/?)$ admin/index.php?page=store&action=server&target=add [L]
+RewriteRule ^admin/(magaza|store)/(sunucu|server)(/?)$ admin/index.php?page=store&action=server&target=update [L]
+RewriteRule ^admin/(magaza|store)/(sunucu|server)/([0-9]+)(/?)$ admin/index.php?page=store&action=server&target=update&serverID=$3 [L]
+RewriteRule ^admin/(magaza|store)/(sunucu-p|server-p)/([0-9]+)(/?)$ admin/index.php?page=store&action=server&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(magaza|store)/(sunucu|server)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=store&action=server&target=remove&serverID=$4 [L]
+
+RewriteRule ^admin/(magaza|store)/(kategori|category)/(ekle|add)(/?)$ admin/index.php?page=store&action=category&target=add [L]
+RewriteRule ^admin/(magaza|store)/(kategori|category)(/?)$ admin/index.php?page=store&action=category&target=update [L]
+RewriteRule ^admin/(magaza|store)/(kategori|category)/([0-9]+)(/?)$ admin/index.php?page=store&action=category&target=update&categoryID=$3 [L]
+RewriteRule ^admin/(magaza|store)/(kategori-p|category-p)/([0-9]+)(/?)$ admin/index.php?page=store&action=category&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(magaza|store)/(kategori|category)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=store&action=category&target=remove&categoryID=$4 [L]
+
+RewriteRule ^admin/(magaza|store)/(urun|product)/(ekle|add)(/?)$ admin/index.php?page=store&action=product&target=add [L]
+RewriteRule ^admin/(magaza|store)/(urun|product)(/?)$ admin/index.php?page=store&action=product&target=update [L]
+RewriteRule ^admin/(magaza|store)/(urun|product)/([0-9]+)(/?)$ admin/index.php?page=store&action=product&target=update&productID=$3 [L]
+RewriteRule ^admin/(magaza|store)/(urun-p|product-p)/([0-9]+)(/?)$ admin/index.php?page=store&action=product&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(magaza|store)/(urun|product)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=store&action=product&target=remove&productID=$4 [L]
+
+RewriteRule ^admin/(magaza|store)/(urunler|products)/poster/(ekle|add)(/?)$ admin/index.php?page=store&action=productPoster&target=add [L]
+RewriteRule ^admin/(magaza|store)/(urunler|products)/poster(/?)$ admin/index.php?page=store&action=productPoster&target=update [L]
+RewriteRule ^admin/(magaza|store)/(urunler|products)/poster/([0-9]+)(/?)$ admin/index.php?page=store&action=productPoster&target=update&posterID=$3 [L]
+RewriteRule ^admin/(magaza|store)/(urunler|products)/poster-p/([0-9]+)(/?)$ admin/index.php?page=store&action=productPoster&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(magaza|store)/(urunler|products)/poster/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=store&action=productPoster&target=remove&posterID=$4 [L]
+
+RewriteRule ^admin/(magaza|store)/(kupon|coupon)/(ekle|add)(/?)$ admin/index.php?page=store&action=coupon&target=add [L]
+RewriteRule ^admin/(magaza|store)/(kupon|coupon)(/?)$ admin/index.php?page=store&action=coupon&target=update [L]
+RewriteRule ^admin/(magaza|store)/(kupon|coupon)/([0-9]+)(/?)$ admin/index.php?page=store&action=coupon&target=update&couponID=$3 [L]
+RewriteRule ^admin/(magaza|store)/(kupon-p|coupon-p)/([0-9]+)(/?)$ admin/index.php?page=store&action=coupon&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(magaza|store)/(kupon|coupon)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=store&action=coupon&target=remove&couponID=$4 [L]
+
+RewriteRule ^admin/(magaza|store)/(gonder|send)/(esya|invent)(/?)$ admin/index.php?page=store&action=general&target=giftSend [L]
+RewriteRule ^admin/(magaza|store)/(gonder|send)/(esya|invent)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=giftSend&userID=$4 [L]
+RewriteRule ^admin/(magaza|store)/(gonder|send)/(kredi|credit)(/?)$ admin/index.php?page=store&action=general&target=creditSend [L]
+RewriteRule ^admin/(magaza|store)/(gonder|send)/(kredi|credit)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=creditSend&userID=$4 [L]
+RewriteRule ^admin/(magaza|store)/(toplu-indirim|discount)(/?)$ admin/index.php?page=store&action=general&target=discount [L]
+RewriteRule ^admin/(magaza|store)/(kredi-bonusu|extra-credit)(/?)$ admin/index.php?page=store&action=general&target=extraCredit [L]
+RewriteRule ^admin/(magaza|store)/(gecmis|history)/(magaza|store)(/?)$ admin/index.php?page=store&action=general&target=history&category=store [L]
+RewriteRule ^admin/(magaza|store)/(gecmis|history)/(magaza-p|store-p)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=history&category=store&pageNumber=$4 [L]
+RewriteRule ^admin/(magaza|store)/(gecmis|history)/(magaza|store)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=history&category=store&id=$5 [L]
+RewriteRule ^admin/(magaza|store)/(gecmis|history)/(kredi|credit)(/?)$ admin/index.php?page=store&action=general&target=history&category=credit [L]
+RewriteRule ^admin/(magaza|store)/(gecmis|history)/(kredi-p|credit-p)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=history&category=credit&pageNumber=$4 [L]
+RewriteRule ^admin/(magaza|store)/(gecmis|history)/(kredi|credit)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=history&category=credit&id=$5 [L]
+RewriteRule ^admin/(magaza|store)/(gecmis|history)/(sandik|chest)(/?)$ admin/index.php?page=store&action=general&target=history&category=chest [L]
+RewriteRule ^admin/(magaza|store)/(gecmis|history)/(sandik-p|chest-p)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=history&category=chest&pageNumber=$4 [L]
+RewriteRule ^admin/(magaza|store)/(gecmis|history)/(sandik|chest)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=history&category=chest&id=$5 [L]
+RewriteRule ^admin/(magaza|store)/(odemeler|payments)(/?)$ admin/index.php?page=store&action=general&target=payments&status=all [L]
+RewriteRule ^admin/(magaza|store)/(odemeler|payments)/([0-9a-zA-Z-_]+)(/?)$ admin/index.php?page=store&action=general&target=payments&status=$3 [L]
+RewriteRule ^admin/(magaza|store)/(odemeler-p|payments-p)/([0-9a-zA-Z-_]+)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=payments&status=$3&pageNumber=$4 [L]
+RewriteRule ^admin/(magaza|store)/(odeme|payment)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=payments&id=$3 [L]
+RewriteRule ^admin/(magaza|store)/(odeme|payment)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=store&action=general&target=payments&removeID=$3 [L]
+
+## FORUM ##
+RewriteRule ^admin/(forum|forum)/(konular|topics)(/?)$ admin/index.php?page=forum&action=topics&target=update [L]
+RewriteRule ^admin/(forum|forum)/(konular-p|topics-p)/([0-9]+)(/?)$ admin/index.php?page=forum&action=topics&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(forum|forum)/(konular|topics)/(islem|proccess)/([0-9]+)/([0-9]+)(/?)$ admin/index.php?page=forum&action=topics&target=proccess&proccess=$4&id=$5 [L]
+RewriteRule ^admin/(forum|forum)/(kategori|category)/(ekle|add)(/?)$ admin/index.php?page=forum&action=category&target=add [L]
+RewriteRule ^admin/(forum|forum)/(kategori|category)/([0-9]+)(/?)$ admin/index.php?page=forum&action=category&target=update&categoryType=$3 [L]
+RewriteRule ^admin/(forum|forum)/(kategori|category)/([0-9]+)/([0-9]+)(/?)$ admin/index.php?page=forum&action=category&target=update&categoryType=$3&categoryID=$4 [L]
+RewriteRule ^admin/(forum|forum)/(kategori-p|category-p)/([0-9]+)(/?)$ admin/index.php?page=forum&action=category&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(forum|forum)/(kategori|category)/(sil|delete)/([0-9]+)/([0-9]+)(/?)$ admin/index.php?page=forum&action=category&target=remove&categoryType=$4&categoryID=$5 [L]
+RewriteRule ^admin/(forum|forum)/(raporlar|reports)/(mesaj|message)(/?)$ admin/index.php?page=forum&action=reports&target=message [L]
+RewriteRule ^admin/(forum|forum)/(raporlar-p|reports-p)/(mesaj|message)/([0-9]+)(/?)$ admin/index.php?page=forum&action=reports&target=message&pageNumber=$4 [L]
+RewriteRule ^admin/(forum|forum)/(raporlar|reports)/(konu|topic)(/?)$ admin/index.php?page=forum&action=reports&target=topic [L]
+RewriteRule ^admin/(forum|forum)/(raporlar-p|reports-p)/(konu|topic)/([0-9]+)(/?)$ admin/index.php?page=forum&action=reports&target=topic&pageNumber=$4 [L]
+RewriteRule ^admin/(forum|forum)/(raporlar|reports)/(islem|proccess)/([0-9]+)/([0-9]+)(/?)$ admin/index.php?page=forum&action=reports&target=proccess&proccess=$4&id=$5 [L]
+RewriteRule ^admin/(forum|forum)/(loglar|logs)/(mesaj|message)(/?)$ admin/index.php?page=forum&action=logs&target=message [L]
+RewriteRule ^admin/(forum|forum)/(loglar-p|logs-p)/(mesaj|message)/([0-9]+)(/?)$ admin/index.php?page=forum&action=logs&target=message&pageNumber=$4 [L]
+RewriteRule ^admin/(forum|forum)/(loglar|logs)/(konu|topic)(/?)$ admin/index.php?page=forum&action=logs&target=topic [L]
+RewriteRule ^admin/(forum|forum)/(loglar-p|logs-p)/(konu|topic)/([0-9]+)(/?)$ admin/index.php?page=forum&action=logs&target=topic&pageNumber=$4 [L]
+RewriteRule ^admin/(forum|forum)/(loglar|logs)/(islem|proccess)/([0-9]+)/([0-9]+)(/?)$ admin/index.php?page=forum&action=logs&target=proccess&proccess=$4&id=$5 [L]
+
+## SUPPORT ##
+RewriteRule ^admin/(destek|support)/(hazir-cevap|ready-answer)/(ekle|add)(/?)$ admin/index.php?page=support&action=repartee&target=add [L]
+RewriteRule ^admin/(destek|support)/(hazir-cevap|ready-answer)(/?)$ admin/index.php?page=support&action=repartee&target=update [L]
+RewriteRule ^admin/(destek|support)/(hazir-cevap|ready-answer)/([0-9]+)(/?)$ admin/index.php?page=support&action=repartee&target=update&replyID=$3 [L]
+RewriteRule ^admin/(destek|support)/(hazir-cevap-p|ready-answer-p)/([0-9]+)(/?)$ admin/index.php?page=support&action=repartee&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(destek|support)/(hazir-cevap|ready-answer)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=support&action=repartee&target=remove&replyID=$4 [L]
+
+RewriteRule ^admin/(destek|support)/(yardim-merkezi|help-center)/(ekle|add)(/?)$ admin/index.php?page=support&action=help-center&target=add [L]
+RewriteRule ^admin/(destek|support)/(yardim-merkezi|help-center)(/?)$ admin/index.php?page=support&action=help-center&target=update [L]
+RewriteRule ^admin/(destek|support)/(yardim-merkezi|help-center)/([0-9]+)(/?)$ admin/index.php?page=support&action=help-center&target=update&topicID=$3 [L]
+RewriteRule ^admin/(destek|support)/(yardim-merkezi-p|help-center-p)/([0-9]+)(/?)$ admin/index.php?page=support&action=help-center&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(destek|support)/(yardim-merkezi|help-center)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=support&action=help-center&target=remove&topicID=$4 [L]
+
+RewriteRule ^admin/(destek|support)/(kategori|category)/(ekle|add)(/?)$ admin/index.php?page=support&action=category&target=add [L]
+RewriteRule ^admin/(destek|support)/(kategori|category)(/?)$ admin/index.php?page=support&action=category&target=update [L]
+RewriteRule ^admin/(destek|support)/(kategori|category)/([0-9]+)(/?)$ admin/index.php?page=support&action=category&target=update&categoryID=$3 [L]
+RewriteRule ^admin/(destek|support)/(kategori-p|category-p)/([0-9]+)(/?)$ admin/index.php?page=support&action=category&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(destek|support)/(kategori|category)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=support&action=category&target=remove&categoryID=$4 [L]
+
+RewriteRule ^admin/(destek|support)/(kilitle|lock)/([0-9]+)/([0-9]+)/([0-9]+)(/?)$ admin/index.php?page=support&action=general&target=lock&id=$3&type=$4&returnUrl=$5 [L]
+RewriteRule ^admin/(destek|support)/(tumu|all)(/?)$ admin/index.php?page=support&action=general&target=all [L]
+RewriteRule ^admin/(destek|support)/(tumu-p|all-p)/([0-9]+)(/?)$ admin/index.php?page=support&action=general&target=all&pageNumber=$3 [L]
+RewriteRule ^admin/(destek|support)/(yanit-bekleyenler|not-replys)(/?)$ admin/index.php?page=support&action=general&target=open [L]
+RewriteRule ^admin/(destek|support)/(yanit-bekleyenler-p|not-replys-p)(/?)$ admin/index.php?page=support&action=general&target=open&pageNumber=$3 [L]
+RewriteRule ^admin/(destek|support)/(cevaplananlar|replys)(/?)$ admin/index.php?page=support&action=general&target=answered [L]
+RewriteRule ^admin/(destek|support)/(cevaplananlar-p|replys-p)(/?)$ admin/index.php?page=support&action=general&target=answered&pageNumber=$3 [L]
+RewriteRule ^admin/(destek|support)/(kapatilanlar|closed)(/?)$ admin/index.php?page=support&action=general&target=disabled [L]
+RewriteRule ^admin/(destek|support)/(kapatilanlar-p|closed-p)(/?)$ admin/index.php?page=support&action=general&target=disabled&pageNumber=$3 [L]
+
+RewriteRule ^admin/(destek|support)/(goruntule|view)/([0-9]+)(/?)$ admin/index.php?page=support&action=view&target=update&supportID=$3 [L]
+RewriteRule ^admin/(destek|support)/(sil|delete)/([0-9]+)/([0-9]+)(/?)$ admin/index.php?page=support&action=view&target=remove&supportID=$3&returnUrl=$4 [L]
+RewriteRule ^admin/(destek|support)/(kapat|close)/([0-9]+)/([0-9]+)(/?)$ admin/index.php?page=support&action=view&target=close&supportID=$3&returnUrl=$4 [L]
+
+## GENERAL ##
+RewriteRule ^admin/(genel|general)/(haber|news)/(ekle|add)(/?)$ admin/index.php?page=general&action=news&target=add [L]
+RewriteRule ^admin/(genel|general)/(haber|news)(/?)$ admin/index.php?page=general&action=news&target=update [L]
+RewriteRule ^admin/(genel|general)/(haber|news)/([0-9]+)(/?)$ admin/index.php?page=general&action=news&target=update&newsID=$3 [L]
+RewriteRule ^admin/(genel|general)/(haber-p|news-p)/([0-9]+)(/?)$ admin/index.php?page=general&action=news&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(genel|general)/(haber|news)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=general&action=news&target=remove&newsID=$4 [L]
+
+RewriteRule ^admin/(genel|general)/(haber|news)/(yorumlar|comments)(/?)$ admin/index.php?page=general&action=comments&target=update [L]
+RewriteRule ^admin/(genel|general)/(haber|news)/(yorumlar|comments)/([0-9]+)(/?)$ admin/index.php?page=general&action=comments&target=update&commentID=$4 [L]
+RewriteRule ^admin/(genel|general)/(haber|news)/(yorumlar-p|comments-p)/([0-9]+)(/?)$ admin/index.php?page=general&action=comments&target=update&pageNumber=$4 [L]
+RewriteRule ^admin/(genel|general)/(haber|news)/(yorumlar|comments)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=general&action=comments&target=remove&commentID=$5 [L]
+
+RewriteRule ^admin/(genel|general)/(haber|news)/(kategori|category)/(ekle|add)(/?)$ admin/index.php?page=general&action=category&target=add [L]
+RewriteRule ^admin/(genel|general)/(haber|news)/(kategori|category)(/?)$ admin/index.php?page=general&action=category&target=update [L]
+RewriteRule ^admin/(genel|general)/(haber|news)/(kategori|category)/([0-9]+)(/?)$ admin/index.php?page=general&action=category&target=update&categoryID=$4 [L]
+RewriteRule ^admin/(genel|general)/(haber|news)/(kategori-p|category-p)/([0-9]+)(/?)$ admin/index.php?page=general&action=category&target=update&pageNumber=$4 [L]
+RewriteRule ^admin/(genel|general)/(haber|news)/(kategori|category)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=general&action=category&target=remove&categoryID=$5 [L]
+
+RewriteRule ^admin/(genel|general)/(duyuru|announcement)/(ekle|add)(/?)$ admin/index.php?page=general&action=broadcast&target=add [L]
+RewriteRule ^admin/(genel|general)/(duyuru|announcement)(/?)$ admin/index.php?page=general&action=broadcast&target=update [L]
+RewriteRule ^admin/(genel|general)/(duyuru|announcement)/([0-9]+)(/?)$ admin/index.php?page=general&action=broadcast&target=update&broadcastID=$3 [L]
+RewriteRule ^admin/(genel|general)/(duyuru-p|announcement-p)/([0-9]+)(/?)$ admin/index.php?page=general&action=broadcast&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(genel|general)/(duyuru|announcement)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=general&action=broadcast&target=remove&broadcastID=$4 [L]
+
+RewriteRule ^admin/(genel|general)/(sayfa|page)/(ekle|add)(/?)$ admin/index.php?page=general&action=pages&target=add [L]
+RewriteRule ^admin/(genel|general)/(sayfa|page)(/?)$ admin/index.php?page=general&action=pages&target=update [L]
+RewriteRule ^admin/(genel|general)/(sayfa|page)/([0-9]+)(/?)$ admin/index.php?page=general&action=pages&target=update&pageID=$3 [L]
+RewriteRule ^admin/(genel|general)/(sayfa-p|page-p)/([0-9]+)(/?)$ admin/index.php?page=general&action=pages&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(genel|general)/(sayfa|page)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=general&action=pages&target=remove&pageID=$4 [L]
+
+## PLAYER ##
+RewriteRule ^admin/(oyuncu|player)/(ekle|add)(/?)$ admin/index.php?page=player&action=account&target=create [L]
+RewriteRule ^admin/(oyuncular|players)(/?)$ admin/index.php?page=player&action=account&target=player [L]
+RewriteRule ^admin/(oyuncular-p|players-p)/([0-9]+)(/?)$ admin/index.php?page=player&action=account&target=player&pageNumber=$2 [L]
+RewriteRule ^admin/(oyuncular|players)/([0-9a-zA-Z-_]+)(/?)$ admin/index.php?page=player&action=account&target=player&proccess=all&username=$2 [L]
+RewriteRule ^admin/(oyuncular|players)/([0-9a-zA-Z-_]+)/(duzenle|edit)(/?)$ admin/index.php?page=player&action=account&target=player&proccess=change&username=$2 [L]
+RewriteRule ^admin/(oyuncu|player)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=player&action=account&target=remove&userID=$3 [L]
+RewriteRule ^admin/(oyuncu|player)/(sandik|chest)/(sil|delete)/([0-9]+)/([0-9a-zA-Z-_]+)(/?)$ admin/index.php?page=player&action=account&target=chestRemove&removeID=$4&username=$5 [L]
+RewriteRule ^admin/(oyuncu|player)/(envanter|inventory)/(sil|delete)/([0-9]+)/([0-9a-zA-Z-_]+)(/?)$ admin/index.php?page=player&action=account&target=inventoryRemove&removeID=$4&username=$5 [L]
+RewriteRule ^admin/(oyuncu|player)/(yetkililer|owners)(/?)$ admin/index.php?page=player&action=account&target=permissions [L]
+RewriteRule ^admin/(oyuncu|player)/(yetkililer-p|owners-p)/([0-9]+)(/?)$ admin/index.php?page=player&action=account&target=permissions&pageNumber=$3 [L]
+
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/(ekle|add)(/?)$ admin/index.php?page=player&action=banned&target=create [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/(ekle|add)/([0-9]+)(/?)$ admin/index.php?page=player&action=banned&target=create&userID=$4 [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=player&action=banned&target=remove&bannedID=$4 [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/([0-9]+)(/?)$ admin/index.php?page=player&action=banned&target=update&bannedID=$3 [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/(tumu|all)(/?)$ admin/index.php?page=player&action=banned&target=update&category=all [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/(tumu-p|all-p)/([0-9]+)(/?)$ admin/index.php?page=player&action=banned&target=update&category=all&pageNumber=$4 [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/site(/?)$ admin/index.php?page=player&action=banned&target=update&category=web [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/site-p/([0-9]+)(/?)$ admin/index.php?page=player&action=banned&target=update&category=web&pageNumber=$4 [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/(destek|support)(/?)$ admin/index.php?page=player&action=banned&target=update&category=support [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/(destek-p|support-p)/([0-9]+)(/?)$ admin/index.php?page=player&action=banned&target=update&category=support&pageNumber=$4 [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/(yorum|comment)(/?)$ admin/index.php?page=player&action=banned&target=update&category=comment [L]
+RewriteRule ^admin/(oyuncu|player)/(yasaklama|banned)/(yorum-p|comment-p)/([0-9]+)(/?)$ admin/index.php?page=player&action=banned&target=update&category=comment&pageNumber=$4 [L]
+
+RewriteRule ^admin/(oyuncu|player)/(yetkiler|permissions)(/?)$ admin/index.php?page=player&action=permission&target=update [L]
+RewriteRule ^admin/(oyuncu|player)/(yetkiler-p|permissions-p)/([0-9]+)(/?)$ admin/index.php?page=player&action=permission&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(oyuncu|player)/(yetki|permission)/([0-9]+)(/?)$ admin/index.php?page=player&action=permission&target=update&permID=$3 [L]
+RewriteRule ^admin/(oyuncu|player)/(yetki|permission)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=player&action=permission&target=remove&permID=$4 [L]
+RewriteRule ^admin/(oyuncu|player)/(yetki|permission)/(ekle|add)(/?)$ admin/index.php?page=player&action=permission&target=add [L]
+
+## SETTINGS ##
+RewriteRule ^admin/(ayarlar|settings)/(genel-ayarlar|general-settings)(/?)$ admin/index.php?page=settings&action=general [L]
+RewriteRule ^admin/(ayarlar|settings)/(sistem-ayarlari|system-settings)(/?)$ admin/index.php?page=settings&action=system [L]
+RewriteRule ^admin/(ayarlar|settings)/(smtp-ayarlari|smtp-settings)(/?)$ admin/index.php?page=settings&action=smtp [L]
+RewriteRule ^admin/(ayarlar|settings)/(odeme-ayarlari|payment-settings)(/?)$ admin/index.php?page=settings&action=payment [L]
+RewriteRule ^admin/(ayarlar|settings)/(kredi-ayarlari|credit-settings)(/?)$ admin/index.php?page=settings&action=creditPackets [L]
+RewriteRule ^admin/(ayarlar|settings)/(dil|language)/(ekle|add)(/?)$ admin/index.php?page=settings&action=languages&target=add [L]
+RewriteRule ^admin/(ayarlar|settings)/(dil|language)(/?)$ admin/index.php?page=settings&action=languages [L]
+RewriteRule ^admin/(ayarlar|settings)/(dil|language)/([0-9]+)(/?)$ admin/index.php?page=settings&action=languages&id=$3 [L]
+RewriteRule ^admin/(ayarlar|settings)/(dil|language)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=settings&action=languages&target=remove&id=$4 [L]
+RewriteRule ^admin/(ayarlar|settings)/(dil|language)/default/([0-9a-zA-Z-_]+)(/?)$ admin/index.php?page=settings&action=languages&target=default&code=$3 [L]
+
+## MODULES ##
+RewriteRule ^admin/(ekstralar|modules)/(kart-oyunu|card-game)/(ekle|add)(/?)$ admin/index.php?page=modules&action=cardGame&target=create [L]
+RewriteRule ^admin/(ekstralar|modules)/(kart-oyunu|card-game)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=modules&action=cardGame&target=remove&cardID=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(kart-oyunu|card-game)/(gecmis|history)(/?)$ admin/index.php?page=modules&action=cardGame&target=history [L]
+RewriteRule ^admin/(ekstralar|modules)/(kart-oyunu|card-game)/(gecmis-p|history-p)/([0-9]+)(/?)$ admin/index.php?page=modules&action=cardGame&target=history&pageNumber=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(kart-oyunu|card-game)/(gecmis|history)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=modules&action=cardGame&target=history&historyID=$5 [L]
+RewriteRule ^admin/(ekstralar|modules)/(kart-oyunlari|card-games)(/?)$ admin/index.php?page=modules&action=cardGame&target=update [L]
+RewriteRule ^admin/(ekstralar|modules)/(kart-oyunlari|card-games)/([0-9]+)(/?)$ admin/index.php?page=modules&action=cardGame&target=update&cardID=$3 [L]
+RewriteRule ^admin/(ekstralar|modules)/(kart-oyunlari-p|card-games-p)/([0-9]+)(/?)$ admin/index.php?page=modules&action=cardGame&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(ekstralar|modules)/(hediye-kuponu|gift-coupon)/(ekle|add)(/?)$ admin/index.php?page=modules&action=coupon&target=create [L]
+RewriteRule ^admin/(ekstralar|modules)/(hediye-kuponu|gift-coupon)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=modules&action=coupon&target=remove&couponID=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(hediye-kuponu|gift-coupon)/(gecmis|history)(/?)$ admin/index.php?page=modules&action=coupon&target=history [L]
+RewriteRule ^admin/(ekstralar|modules)/(hediye-kuponu|gift-coupon)/(gecmis-p|history-p)/([0-9]+)(/?)$ admin/index.php?page=modules&action=coupon&target=history&pageNumber=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(hediye-kuponu|gift-coupon)/(gecmis|history)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=modules&action=coupon&target=history&historyID=$5 [L]
+RewriteRule ^admin/(ekstralar|modules)/(hediye-kuponlari|gift-coupons)(/?)$ admin/index.php?page=modules&action=coupon&target=update [L]
+RewriteRule ^admin/(ekstralar|modules)/(hediye-kuponlari|gift-coupons)/([0-9]+)(/?)$ admin/index.php?page=modules&action=coupon&target=update&couponID=$3 [L]
+RewriteRule ^admin/(ekstralar|modules)/(hediye-kuponlari-p|gift-coupons-p)/([0-9]+)(/?)$ admin/index.php?page=modules&action=coupon&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(ekstralar|modules)/(tema|theme)/css(/?)$ admin/index.php?page=modules&action=theme&target=css [L]
+RewriteRule ^admin/(ekstralar|modules)/(tema|theme)/(duzenle|edit)(/?)$ admin/index.php?page=modules&action=theme&target=change [L]
+RewriteRule ^admin/(ekstralar|modules)/(tema|theme)/(duzenle|edit)/([0-9a-zA-Z-_]+)(/?)$ admin/index.php?page=modules&action=theme&target=change&theme=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(tema|theme)/(ekle|add)(/?)$ admin/index.php?page=modules&action=theme&target=add [L]
+RewriteRule ^admin/(ekstralar|modules)/webhooks/(kredi|credit)(/?)$ admin/index.php?page=modules&action=webhooks&target=credit [L]
+RewriteRule ^admin/(ekstralar|modules)/webhooks/(magaza|store)(/?)$ admin/index.php?page=modules&action=webhooks&target=store [L]
+RewriteRule ^admin/(ekstralar|modules)/webhooks/(haber|news)(/?)$ admin/index.php?page=modules&action=webhooks&target=news [L]
+RewriteRule ^admin/(ekstralar|modules)/webhooks/(yorum|comment)(/?)$ admin/index.php?page=modules&action=webhooks&target=comment [L]
+RewriteRule ^admin/(ekstralar|modules)/webhooks/(destek|support)(/?)$ admin/index.php?page=modules&action=webhooks&target=support [L]
+RewriteRule ^admin/(ekstralar|modules)/(resim|image)/(yukle|upload)(/?)$ admin/index.php?page=modules&action=images&target=create [L]
+RewriteRule ^admin/(ekstralar|modules)/(resimler|images)(/?)$ admin/index.php?page=modules&action=images&target=update [L]
+RewriteRule ^admin/(ekstralar|modules)/(resimler-p|images-p)/([0-9]+)(/?)$ admin/index.php?page=modules&action=images&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(ekstralar|modules)/(resim|image)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=modules&action=images&target=remove&removeID=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(yedek|backup)/(olustur|create)(/?)$ admin/index.php?page=modules&action=backups&target=create [L]
+RewriteRule ^admin/(ekstralar|modules)/(yedekler|backups)(/?)$ admin/index.php?page=modules&action=backups&target=update [L]
+RewriteRule ^admin/(ekstralar|modules)/(yedekler-p|backups-p)/([0-9]+)(/?)$ admin/index.php?page=modules&action=backups&target=update&pageNumber=$3 [L]
+RewriteRule ^admin/(ekstralar|modules)/(yedek|backup)/(indir|download)/([0-9]+)/([0-9]+)(/?)$ admin/index.php?page=modules&action=backups&target=download&backupID=$4&type=$5 [L]
+RewriteRule ^admin/(ekstralar|modules)/(yedek|backup)/(kur|install)/([0-9]+)(/?)$ admin/index.php?page=modules&action=backups&target=install&backupID=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(yedek|backup)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=modules&action=backups&target=remove&removeID=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(module|modul)/(yukle|upload)(/?)$ admin/index.php?page=modules&action=module&target=upload [L]
+RewriteRule ^admin/(ekstralar|modules)/(piyango|lottery)(/?)$ admin/index.php?page=modules&action=lottery&target=update [L]
+RewriteRule ^admin/(ekstralar|modules)/(piyango|lottery)/(gecmis|history)(/?)$ admin/index.php?page=modules&action=lottery&target=history [L]
+RewriteRule ^admin/(ekstralar|modules)/(piyango|lottery)/(gecmis-p|history-p)/([0-9]+)(/?)$ admin/index.php?page=modules&action=lottery&target=history&pageNumber=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(piyango|lottery)/(gecmis|history)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=modules&action=lottery&target=history&id=$5 [L]
+RewriteRule ^admin/(ekstralar|modules)/(piyango|lottery)/(kazananlar|winners)(/?)$ admin/index.php?page=modules&action=lottery&target=winners [L]
+RewriteRule ^admin/(ekstralar|modules)/(piyango|lottery)/(kazananlar-p|winners-p)/([0-9]+)(/?)$ admin/index.php?page=modules&action=lottery&target=winners&pageNumber=$4 [L]
+RewriteRule ^admin/(ekstralar|modules)/(piyango|lottery)/(kazananlar|winners)/(sil|delete)/([0-9]+)(/?)$ admin/index.php?page=modules&action=lottery&target=winners&id=$5 [L]
+
+ErrorDocument 404 /404
+ErrorDocument 403 /404

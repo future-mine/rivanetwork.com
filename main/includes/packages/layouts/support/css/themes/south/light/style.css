@@ -1,0 +1,126 @@
+.support-tag {
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 200px;
+  font-size: .75rem;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  position: relative;
+}
+.support-tag.status-open {
+  background-color: #615dfa;
+  color: #fff;
+}
+.support-tag.status-reply {
+  background-color: #40d04f;
+  color: #fff;
+}
+.support-tag.status-disabled {
+  background-color: #45437f;
+  color: #fff;
+}
+.support-sidebar {
+  font-family: Rajdhani, sans-serif;
+  font-weight: 900;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 1.5rem 2.5rem;
+  letter-spacing: calc(1px / 5);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin: .5rem 0;
+}
+.support-sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.support-sidebar::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 10px;
+  height: calc(100% - 15px * 1 - 7.5px);
+  background-color: white;
+  z-index: 3;
+  border-radius: 0 7px 7px 0;
+  background-size: 600%;
+}
+.support-sidebar-title {
+  position: relative;
+  z-index: 1;
+}
+.support-sidebar-text {
+  margin-left: 2rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+.support-sidebar-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  position: absolute;
+  top: 26px;
+  right: 1rem;
+  z-index: 1;
+}
+.support-sidebar-icon-text {
+  fill: #fff;
+}
+.support-icon-category {
+  background: #d3e726;
+}
+.support-sidebar.category::before {
+  background: linear-gradient(90deg, #2f9a3a, #e9fc49);
+}
+.support-sidebar.category::after {
+  background: #e9fc49;
+  box-shadow: 5px 0 30px #fff;
+}
+.support-icon-server {
+  background: #19cbd0;
+}
+.support-sidebar.server::before {
+  background: linear-gradient(90deg, #006fb5, #3af0d4);
+}
+.support-sidebar.server::after {
+  background: #3ad0d4;
+  box-shadow: 5px 0 30px #fff;
+}
+.support-icon-update {
+  background: #29e068;
+}
+.support-sidebar.update::before {
+  background: linear-gradient(90deg, #009989, #4df960);
+}
+.support-sidebar.update::after {
+  background: #11ffbd;
+  box-shadow: 5px 0 30px #fff;
+}
+.support-mobile-button {
+  display: none;
+}
+.support-pc-button {
+  display: block;
+}
+@media (max-width: 720px) {
+  .support-mobile-button {
+    display: block;
+  }
+  .support-pc-button {
+    display: none;
+  }
+}
